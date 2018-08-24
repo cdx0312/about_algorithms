@@ -1,5 +1,5 @@
 public class Solution {
-    public int removeDuplicates(int[] A) {
+    private static int removeDuplicates(int[] A) {
         if (A == null || A.length == 0)
             return 0;
         if (A.length == 1)
@@ -15,6 +15,6 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] arr = {1,1,2,2,3,3,4};
-        System.out.println(new Solution().removeDuplicates(arr));
+        System.out.println(removeDuplicates(arr));
     }
 }

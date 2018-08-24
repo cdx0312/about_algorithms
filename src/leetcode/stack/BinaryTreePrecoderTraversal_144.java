@@ -1,7 +1,5 @@
 package leetcode.stack;
 
-import sun.reflect.generics.tree.Tree;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -38,4 +36,36 @@ public class BinaryTreePrecoderTraversal_144 {
         }
         return res;
     }
+
+    // Command
+    public List<Integer> preorderTraversal11(TreeNode root) {
+        if (root == null)
+            return res;
+        Stack<Command> stack = new Stack<>();
+        stack.push(new Command("go", root));
+        while (stack.isEmpty()) {
+            Command command = stack.pop();
+            if (command.command.equals("print")) {
+                res.add(command.node.val);
+            } else {
+                if (command.node.right != null)
+                    stack.push(new Command("go", command.node.right));
+                if (command.node.left != null)
+                    stack.push(new Command("go", command.node.left));
+                stack.push(new Command("print", command.node));
+            }
+        }
+        return res;
+    }
+
+    class Command {
+        String command;
+        TreeNode node;
+
+        public Command(String command, TreeNode node) {
+            this.command = command;
+            this.node = node;
+        }
+    }
+
 }
